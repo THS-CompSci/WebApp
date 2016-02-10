@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
     jQuery('#sayhi').click(function () {
         var the_name = jQuery('#thename').val();
-        var the_pass = jQuery('#thepassword')
+        var the_pass = jQuery('#thepassword').val();
         //will send the name and password to the server (with a php?)
         if (the_name === '') {
             bootbox.alert('You do have a name, don\'t you?');
