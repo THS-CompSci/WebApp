@@ -1,0 +1,11 @@
+jQuery(document).ready(function () {
+    jQuery('#sayhi').click(function () {
+        var the_name = jQuery('#thename').val();
+        if (the_name === '') {
+            bootbox.alert('You do have a name, don\'t you?');
+        }
+        else {
+            bootbox.alert("Hi " + jQuery('#thename').val() + "!");
+        }
+    });
+});
