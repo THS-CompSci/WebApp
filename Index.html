@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color: cornflowerblue !important;
+                padding-top: 12em;
+                width: 450px !important;
+                margin:auto !important;
+
+            }
+
+            div.color{
+                background-color: whitesmoke;
+                height : 450px !important;
+                padding-top: 5em;
+                padding-left: 2em;
+
+            }
+            div.form{
+                width: 200px !important;
+                margin: auto !important;
+            }
+            div.pad{
+                padding-top: 1em;
+            }
+
+
+        </style>
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+        <script type="text/javascript" src = "Input.js"></script>
+        <title>HallPass</title>
+    </head>
+    <body >
+        <div class="color">
+            <div class="container-fluid form" style="">
+                <div class="row">
+                    <h1>HallPass</h1>
+                    <label>Username</label>
+                    <input type ="text"     
+                           id ="thename"
+                           value = ""
+                           autofocus
+                           placeholder = "User Name"/>
+                    <p></p>
+                    <label>Password</label>
+                    <input type ="password"     
+                           id ="password"
+                           value = ""/>
+                    <div class="pad">
+                        <input class="btn btn-primary" type="submit" id="sayhi" value="Submit" />
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+
+</html>
