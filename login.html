@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="col-sm-4"></div>
+
+<form class="container-fluid panel panel-default col-sm-4" id="login" role="form">
+    <div class="form-group">
+    <label> Katy ISD ID:</label>
+    <input type="text" id="usrnm" class="form-control" placeholder="Enter KatyISD ID"><br>
+    </div>
+    <div class="form-group">
+    <label>Password:</label>
+    <input type="password" id="pswd" class="form-control" placeholder="Enter password"><br>
+    </div>
+    <div class="form-group">
+    <input type="button" class="btn btn-primary" onclick="login()" value="Login">
+    </div>
+</form>
+<div class="col-sm-4"></div>
+
+<p id="demo"></p>
+
+<script>
+    //not yet in use
+    function login(){
+        var usrnm = document.getElementById("login").elements[0].value;
+        var pswd = document.getElementById("login").elements[1].value;
+        var valid = false;
+        $(document).ready(function(){
+        $.ajax({
+            type:'POST',
+            url:"/Web/UserList.xml",
+            dataType:"xml",
+            success:function(xml){
+                $(xml).find('User').each(function(){
+                    var ID = $(this).find('ID').text();
+                    var Password = $(this).find('Password').text();
+                    if(usrnm==ID && pswd==Password){
+                        valid=true;
+                    }
+                });
+                if(valid){
+                    alert("Login successful!");
+                }
+                else {
+                    alert("Login unsuccessful!");
+
+                }
+            },
+            error: function() {
+                alert("The XML File could not be processed correctly.");
+            }
+        });
+        });
+
+    }
+</script>
+</body>
+</html>
