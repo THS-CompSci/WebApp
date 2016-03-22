@@ -22,7 +22,6 @@ body {
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
     width:100%;
 }
 
@@ -36,12 +35,12 @@ left: 50%;
 
 }
 .bg{
-position: fixed;
+position: relative;
 margin: auto;
-left:  6%; 
+left:  0%;
     right:0;
-    top: 10%;
-    bottom: 0;
+   top: 10%;
+   bottom: 0;
 }
 .test {
 position: absolute;
