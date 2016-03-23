@@ -4,33 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Test</title>
-    <!-- Auto-Scaling & JQuery Import & Bootstrap Import-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <style>
-         p {
-            padding: 100px 50px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-<p></p>
+<body class="login">
 <div class="col-sm-4"></div>
-    <!-- Form which will be submitted to the server-->
-<form class="container-fluid panel panel-default col-sm-4" id="login" role="form">
-    <div class="panel-heading">
-        Login
-    </div>
+<div id="loginLogo"></div>
+
+<form class="container-fluid" id="login" role="form">
+
     <br>
     <div class="form-group">
-        <label> Katy ISD ID:</label>
-        <!-- Username -->
+        <label class="login"> Katy ISD ID:</label>
         <input type="text" id="usrnm" class="form-control" placeholder="Enter KatyISD ID"><br>
     </div>
     <div class="form-group">
-        <label>Password:</label>
+        <label class="login">Password:</label>
         <input type="password" id="pswd" class="form-control" placeholder="Enter password"><br>
     </div>
     <div class="form-group">
@@ -42,7 +34,6 @@
 <p id="demo"></p>
 
 <script>
-    //Will be sending the form and as of now makes alert of if the username/pw combo was valid
     //not yet in use
     function login(){
         var usrnm = document.getElementById("login").elements[0].value;
