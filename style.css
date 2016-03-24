@@ -7,7 +7,7 @@ html, body{
     margin: auto;
 }
 body.login{
-    background: linear-gradient(#5e75c0 50%, #01034b);
+    background: linear-gradient(#5e75c0 35%, #01034b);
 }
 #login {
     display: block;
