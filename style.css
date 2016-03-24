@@ -7,7 +7,7 @@ html, body{
     margin: auto;
 }
 body.login{
-    background: radial-gradient(#02319b 70%, #01034b);
+    background: linear-gradient(#02319b 70%, #01034b);
 }
 #login {
     display: block;
