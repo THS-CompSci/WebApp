@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<meta charset="ISO-8859-1">
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-	<script src="script.js"></script>
-	<title>MYPassHistory</title>
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    	<link rel="stylesheet" href="tableStyle.css">
+	<script type="text/javascript" src="tScript.js"></script>
+<title>PassHistory</title>
 </head>
-<!--  Need a way to get history and display info -->
-<table id="tb1" class="tab" >
-	<tr>
-		<th>Date</th>
-		<th>Student</th>
-		<th>Time</th>
-	</tr>
-</table>
+<body>
+	<div class = "color">
+		<div class="container-fluid form">
+			<!--  Need a way to get history and display info -->
+			<table class="table table-striped table-hover" id="tb1">
+				<thead>
+				<tr>
+					<th>Row</th>
+					<th>Date</th>
+					<th>Student</th>
+					<th>Time</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>1</td>
+					<td>01/01/16</td>
+					<td>Bot1</td>
+					<td>11:30</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div>
+		<input type="button" class="btn btn-primary" onclick="addRow()" value="Add Row">
+	</div>
+</body>
 </html>
+
