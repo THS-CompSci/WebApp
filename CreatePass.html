@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pass Specification</title>
+    <!-- Auto-Scaling & JQuery Import & Bootstrap Import-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+</head>
+<form name="form" class="container-fluid" id="createPass" role="form" method="post">
+
+    <br>
+    <div class="form-group">
+        <label class="createPass">Destination:</label>
+        //make a drop down menu with input as well
+        <input type="text" id="destination" class="form-control" placeholder="Destination"><br>
+        <div id="datetimepicker"></div>
+        <input name="submit" type="button" class="btn btn-primary form-control submit" value="Create">
+    </div>
+</form>
+<span class="error" style="display:none"> Please Enter Valid Data</span>
+<span class="success" style="display:none"> Form Submitted Success</span>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+            inline: true,
+            sideBySide: true
+        });
+    });
+    $(function () {
+        $(".submit").click(function () {
+            var destination = $("#destination").value;
+            var date = $('#datetimepicker').data('date').substring(0, 10);
+            var time = $('#datetimepicker').data('date').substring(11);
+            var teacherId = readCookie('teacherId');
+            var studentId = readCookie('studentId');
+            var dataString = 'STUDENTID='+ studentId + '&TEACHERID='+ teacherId + '&DESTINATION=' + destination + '&TIMEOFPASS=' + time + '&DATEOFPASS=' + date;
+
+            if (destination == '' || time == '' || date == '') {
+                $('.success').fadeOut(200).hide();
+                $('.error').fadeOut(200).show();
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "createPass.php",
+                    data: dataString,
+                    success: function () {
+                        $('.success').fadeIn(200).show();
+                        $('.error').fadeOut(200).hide();
+                    }
+                });
+            }
+            return false;
+        });
+    });
+
+    function readCookie(name) {
+        var i, c, ca, nameEQ = name + "=";
+        ca = document.cookie.split(';');
+        for (i = 0; i < ca.length; i++) {
+            c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1, c.length);
+            }
+            if (c.indexOf(nameEQ) == 0) {
+                return c.substring(nameEQ.length, c.length);
+            }
+        }
+        return '';
+    }
+</script>
+</html>
