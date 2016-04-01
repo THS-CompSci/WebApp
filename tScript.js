@@ -82,7 +82,7 @@ function callPage(url, div){
         //Request is finished and the response is ready
         if(ajax.readyState==4){
             if(ajax.status==200){
-                //Sets the HTML of the given div to the response text
+                //Sets the HTML of the given div to the response text, only for testing purposes.
                 div.innerHTML = ajax.responseText;
             }
         }
