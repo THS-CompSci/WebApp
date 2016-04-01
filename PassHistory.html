@@ -6,18 +6,27 @@
     	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     	<link rel="stylesheet" href="tableStyle.css">
 	<script type="text/javascript" src="tScript.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <title>PassHistory</title>
 </head>
 <body>
 	<div class = "color">
 		<div class="container-fluid form">
+			<div>
+				<h1 id="tit">Student Name</h1>
+				<div class="form-group">
+					<label for="stuID">New Student:</label>
+					<input type="text" class="form-control" id="stuID">
+				</div>
+				<input type="button" class="btn btn-primary" onclick="requestStudent()" value="Load History">
+			</div>
 			<!--  Need a way to get history and display info -->
 			<table class="table table-striped table-hover" id="tb1">
 				<thead>
 				<tr>
 					<th>Row</th>
 					<th>Date</th>
-					<th>Student</th>
+					<th>Destination</th>
 					<th>Time</th>
 				</tr>
 				</thead>
@@ -28,14 +37,30 @@
 					<td>Bot1</td>
 					<td>11:30</td>
 				</tr>
+				<tr>
+					<td>2</td>
+					<td>01/02/16</td>
+					<td>Bot2</td>
+					<td>11:30</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>01/03/16</td>
+					<td>Bot3</td>
+					<td>11:30</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>01/04/16</td>
+					<td>Bot4</td>
+					<td>11:30</td>
+				</tr>
 				</tbody>
 			</table>
 		</div>
-	</div>
-
-	<div>
-		<input type="button" class="btn btn-primary" onclick="addRow()" value="Add Row">
+		<div id="testDisplay">
+			<p>The table data is temporary until we set up a database</p>
+		</div>
 	</div>
 </body>
 </html>
-
