@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- AutoScaling & Bootstrap/Style import & Jquery import & JavaScript import-->
         <meta name=viewport content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
         <title>HallPass</title>
+        <style>
+            button.center {
+                width: 500px;
+                font-size: 250%;
+                margin: auto;
+                display: block;
+            }
+        </style>
     </head>
-    <body >
-        <a class="button" style="float: right" href="login.html">LogOut</a>
+    <body>
+        <button class="btn btn-link" style="float: right">Log Out</button>
+        <img src="FinalTHSLOGO.png" style="height: 250px; width: auto; padding-left: 50px; padding-top: 25px;">
         <div>
-        <img src="FinalTHSLOGO.png" alt="TLogo" style="width:250px;height:250px; display: block">
-        </div>
-        <div class="color">
-            <!-- Fluid allows the stuff to move when window is resized-->
-            <div class="container-fluid form" style="">
-                <div class="row">
-                    <a class="btn btn-primary btn-block" href="PassHistory.html" id="btn1">My Pass History</a>
-                    
-                    <p></p>
-                </div>
-            </div>
+            <button class="btn btn-primary center">Pass History</button>
+            <br>
+            <br>
+            <button class="btn btn-primary center">New Pass</button>
         </div>
     </body>
-
 </html>
