@@ -48,7 +48,7 @@ function addRow(date, name, time){
     var ret=getTable("#tb1",1,"new time");
     jQuery("#tb1").html(ret);
 }
-
+//Anything above this line is deprecated ---------------------------------------------------
 function requestStudent(){
     var student=jQuery("#stuID").val();
     jQuery("#tit").text(student);
