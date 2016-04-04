@@ -20,12 +20,19 @@
 
 
 </head>
+<form class="navbar-form container-fluid" role="search">
+    <div class="input-group add-on">
+        <input type="text" class="form-control" placeholder="Search student" name="srch-term" id="srch-term">
+        <div class="input-group-btn">
+            <button class="btn btn-default" type="button" onclick="searchStudent()" id="search"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </div>
+</form>
 <form name="form" class="container-fluid" id="createPass" role="form" method="post">
-
     <br>
     <div class="form-group">
         <label class="createPass">Destination:</label>
-        //make a drop down menu with input as well
+        <!--make a drop down menu with input as well-->
         <input type="text" id="destination" class="form-control" placeholder="Destination"><br>
         <div id="datetimepicker"></div>
         <input name="submit" type="button" class="btn btn-primary form-control submit" value="Create">
@@ -49,6 +56,30 @@
             var teacherId = readCookie('teacherId');
             var studentId = readCookie('studentId');
             var dataString = 'STUDENTID='+ studentId + '&TEACHERID='+ teacherId + '&DESTINATION=' + destination + '&TIMEOFPASS=' + time + '&DATEOFPASS=' + date;
+
+            if (destination == '' || time == '' || date == '') {
+                $('.success').fadeOut(200).hide();
+                $('.error').fadeOut(200).show();
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "createPass.php",
+                    data: dataString,
+                    success: function () {
+                        $('.success').fadeIn(200).show();
+                        $('.error').fadeOut(200).hide();
+                    }
+                });
+            }
+            return false;
+        });
+    });
+
+    $(function searchStudent() {
+        $('#search').click(function () {
+            var student = $("#search").value;
+            var dataString = 'STUDENTID='+ studentId;
 
             if (destination == '' || time == '' || date == '') {
                 $('.success').fadeOut(200).hide();
