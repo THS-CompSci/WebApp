@@ -48,11 +48,13 @@ function addRow(date, name, time){
     var ret=getTable("#tb1",1,"new time");
     jQuery("#tb1").html(ret);
 }
-//Anything above this line is deprecated ---------------------------------------------------
+
 function requestStudent(){
     var student=jQuery("#stuID").val();
     jQuery("#tit").text(student);
     //callPage('passHistory.php?student_id='+student,document.getElementById("testDisplay"));
+    //The php has TEACHERID as the name
+    callPage('passHistory.php?student_name='+student,document.getElementById("testDisplay"));
 }
 
 function AjaxCaller(){
@@ -77,12 +79,12 @@ function AjaxCaller(){
 function callPage(url, div){
     ajax=AjaxCaller();
     //Requests with the specified url
-    ajax.open("GET", url, true);
+    ajax.open("POST", url, true);
     ajax.onreadystatechange=function(){
         //Request is finished and the response is ready
         if(ajax.readyState==4){
             if(ajax.status==200){
-                //Sets the HTML of the given div to the response text, only for testing purposes.
+                //Sets the HTML of the given div to the response text
                 div.innerHTML = ajax.responseText;
             }
         }
