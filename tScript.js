@@ -5,6 +5,36 @@
  * tables - the number of rows to fill the table with
  * fillText - the text to fill each row with
  */
+//Could be used for generation of pages through QR codes. With this, the html can take variables from the URL and turn them into arrays.
+//For example: parseURLParams("www.thshallpass.com?name=something") returns {name: ["something"]}
+ 
+ function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
+
+    if (query === url || query === "") {
+        return;
+    }
+
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=");
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) {
+            parms[n] = [];
+        }
+
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
+}
+ 
+ 
+ 
 function getTable(ind, tables, fillText){
     //Gets the HTML of the table with the given class 'ind'
     var tableString=jQuery(ind).html();
