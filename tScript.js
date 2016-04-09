@@ -63,7 +63,7 @@ function callPage(url, div){
             if(ajax.status==200){
                 //Gets the response from the server and then updates the table based on it
 				            var json=ajax.resposeText;
-				            updateTable(jsonString);
+				            updateTable(json);
             }
         }
     }
