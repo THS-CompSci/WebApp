@@ -5,15 +5,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     	<link rel="stylesheet" href="tableStyle.css">
-	<script type="text/javascript" src="tScript.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.js"></script>
+	
+	
+	<script type="text/javascript" src="tScript.js"></script>
 <title>PassHistory</title>
 </head>
 <body>
-	<button class="btn btn-link" style="float: right">Log Out</button>
-	<a onclick="location.href='Index.html'">
-	<img src="FinalTHSLOGO.png" style="height: auto; width: 5%; padding-left: 10px; padding-top: 10px;">
-	</a>
 	<div class = "color">
 		<div class="container-fluid form">
 			<div>
@@ -22,44 +22,17 @@
 					<label for="stuID">New Student:</label>
 					<input type="text" class="form-control" id="stuID">
 				</div>
-				<input type="button" class="btn btn-primary" onclick="requestStudent()" value="Load History">
+				<input type="button" class="btn btn-primary" onclick="updateTable()" value="Load History">
 			</div>
 			<!--  Need a way to get history and display info -->
-			<table class="table table-striped table-hover" id="tb1">
+			<table id="table" class="table table-striped"  data-toggle="table">
 				<thead>
 				<tr>
-					<th>Row</th>
-					<th>Date</th>
-					<th>Destination</th>
-					<th>Time</th>
+					<th data-field='date'>Date</th>
+					<th data-field='dest'>Destination</th>
+					<th data-field='time'>Time</th>
 				</tr>
 				</thead>
-				<tbody>
-				<tr>
-					<td>1</td>
-					<td>01/01/16</td>
-					<td>Bot1</td>
-					<td>11:30</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>01/02/16</td>
-					<td>Bot2</td>
-					<td>11:30</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>01/03/16</td>
-					<td>Bot3</td>
-					<td>11:30</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>01/04/16</td>
-					<td>Bot4</td>
-					<td>11:30</td>
-				</tr>
-				</tbody>
 			</table>
 		</div>
 		<div id="testDisplay">
