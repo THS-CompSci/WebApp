@@ -17,15 +17,15 @@
 	<div class = "color">
 		<div class="container-fluid form">
 			<div>
-				<h1 id="tit">Student Name</h1>
+				<h1 id="tit">Pass History</h1>
 				<div class="form-group">
-					<label for="stuID">New Student:</label>
+					<label for="stuID">Student:</label>
 					<input type="text" class="form-control" id="stuID">
 				</div>
 				<input type="button" class="btn btn-primary" onclick="updateTable()" value="Load History">
 			</div>
 			<!--  Need a way to get history and display info -->
-			<table id="table" class="table table-striped"  data-toggle="table">
+			<table id="table" class="table table-striped"  data-toggle="table" data-url="x">
 				<thead>
 				<tr>
 					<th data-field='date'>Date</th>
@@ -36,7 +36,7 @@
 			</table>
 		</div>
 		<div id="testDisplay">
-			<p>The table data is temporary until we set up a database</p>
+			<p></p>
 		</div>
 	</div>
 </body>
