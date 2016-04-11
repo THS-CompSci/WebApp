@@ -22,10 +22,16 @@
 </head>
 <form class="navbar-form container-fluid" role="search">
     <div class="input-group add-on" style="width: 45%">
-        <input type="text" class="form-control" placeholder="Search student" id="searchStudentInput">
-        <div class="input-group-btn">
-            <button class="btn btn-default" type="button" id="searchStudent"><i class="glyphicon glyphicon-search"></i>
-            </button>
+        <!--<input type="text" class="form-control" placeholder="Search student" id="searchStudentInput">-->
+        <!--<div class="input-group-btn">-->
+            <!--<button class="btn btn-default" type="button" id="searchStudent"><i class="glyphicon glyphicon-search"></i>-->
+            <!--</button>-->
+        <div class="col-xs-6" >
+            <div class="right-inner-addon">
+                <i class="icon-search"></i>
+                <input type="text" class="form-control" placeholder="Search student" id="searchStudentInput"/>
+            </div>
+        </div>
         </div>
     </div>
 </form>
@@ -52,32 +58,39 @@
             });
         });
 
-        $("#searchStudent").on("click", function () {
-            $('#search').click(function () {
-                var studentName = $("#search").value;
-                var dataString = 'STUDENTNAME=' + studentName;
 
-                if (destination == '' || time == '' || date == '') {
-                    $('.success').fadeOut(200).hide();
-                    $('.error').fadeOut(200).show();
-                }
-                else {
-                    $.ajax({
-                        type: "POST",
-                        url: "searchStudent.php",
-                        data: dataString,
-                        success: function () {
-                            $('.success').fadeIn(200).show();
-                            $('.error').fadeOut(200).hide();
-                        }
-                    });
-                }
-                return false;
+        //fix the keyup function
+        $(function () {
+            var timer;
+            $("#searchStudentInput").keyup(function () {
+                timer && clearTimeout(timer);
+                timer = setTimeout(instantSearch, 200);
             });
         });
 
+        function instantSearch() {
+            var studentName = $("#searchStudentInput").val();
+            var dataString = 'name=' + studentName;
+        if (destination == '' || time == '' || date == '') {
+            $('.success').fadeOut(200).hide();
+            $('.error').fadeOut(200).show();
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "findStudent.php",
+                data: dataString,
+                success: function () {
+                    $('.success').fadeIn(200).show();
+                    $('.error').fadeOut(200).hide();
+                }
+            });
+        }
+        return false;
+        }
+
         $("#createPass").on("click", function () {
-            var destination = $("#destination").value;
+            var destination = $("#destination").val();
             var date = $('#datetimepicker').data('date').substring(0, 10);
             var time = $('#datetimepicker').data('date').substring(11);
             var teacherId = readCookie('teacherId');
@@ -118,8 +131,8 @@
             return '';
         }
 
-    })
-    ;
+    });
+
 
 </script>
 </html>

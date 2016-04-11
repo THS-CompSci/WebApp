@@ -26,14 +26,15 @@
     </div>
 </form>
 <div class="col-sm-4"></div>
-
+<span class="error" style="display:none"> Please Enter Valid Data</span>
+<span class="success" style="display:none"> Form Submitted Success</span>
 <script>
     //not yet in use
     $(document).ready(function () {
         $("#loginbtn").on("click", function () {
-            var usrnm = $("#usrnm").value;
-            var pswd = $("#pswd").value;
-            var dataString = '';
+            var usrnm = $("#usrnm").val();
+            var pswd = $("#pswd").val();
+            var dataString = 'username=' + usrnm + '&password=' + pswd;
             if (usrnm == '' || pswd == '') {
                 $('.success').fadeOut(200).hide();
                 $('.error').fadeOut(200).show();
@@ -42,7 +43,7 @@
                 //check is verifying is different from sending
                 $.ajax({
                     type: "POST",
-                    url: "verifyLogin.php",
+                    url: "checkLogin.php",
                     data: dataString,
                     success: function () {
                         $('.success').fadeIn(200).show();

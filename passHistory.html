@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    	<link rel="stylesheet" href="tableStyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.js"></script>
+	
+	
+	<script type="text/javascript" src="tScript.js"></script>
+<title>PassHistory</title>
+</head>
+<body>
+	<div class = "color">
+		<div class="container-fluid form">
+			<div>
+				<h1 id="tit">Pass History</h1>
+				<div class="form-group">
+					<label for="stuID">Student:</label>
+					<input type="text" class="form-control" id="stuID">
+				</div>
+				<input type="button" class="btn btn-primary" onclick="requestStudent()" value="Load History">
+			</div>
+			<!--  Need a way to get history and display info -->
+			<table id="table" class="table table-striped"  data-toggle="table" data-url="x">
+				<thead>
+				<tr>
+					<th data-field='date'>Date</th>
+					<th data-field='dest'>Destination</th>
+					<th data-field='time'>Time</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
+		<div id="testDisplay">
+			<p></p>
+		</div>
+	</div>
+</body>
+</html>
