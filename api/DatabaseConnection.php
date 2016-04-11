@@ -12,3 +12,4 @@ $connection =null;
         global $connection;
         return $connection;
     }
+?>
