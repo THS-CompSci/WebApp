@@ -31,7 +31,12 @@ function requestStudent(){
     var student=jQuery("#stuID").val();
     jQuery("#tit").text(student);
     //This line assumes that passHistory.php requires a 'student_name' parameter
-    callPage('passHistory.php?student_name='+student,document.getElementById("testDisplay"));
+
+    try{
+      callPage('/api/passHistory.php?student_name='+student,document.getElementById("testDisplay"));
+    }catch(err){
+      document.getElementById("testDisplay").innerHTML=err;
+}
 }
 
 function AjaxCaller(){
@@ -56,18 +61,32 @@ function AjaxCaller(){
 function callPage(url, div){
     ajax=AjaxCaller();
     //Requests with the specified url
-    ajax.open("POST", url, true);
+    ajax.open("GET", url, true);
     ajax.onreadystatechange=function(){
         //Request is finished and the response is ready
         if(ajax.readyState==4){
             if(ajax.status==200){
                 //Gets the response from the server and then updates the table based on it
-				            var json=ajax.resposeText;
+                    json="["+ajax.responseText+"]";
+                    json=fixString(json);
+                    //div.innerHTML=ajax.responseText;
 				            updateTable(json);
             }
         }
     }
     ajax.send(null);
+}
+
+function fixString(fix){
+  var ret="";
+  for(i=0;i<fix.length;i++){
+    if(fix.charAt(i)==='}'&&i<fix.length-2){
+      ret+="},"
+    }else{
+      ret+=fix.charAt(i);
+    }
+  }
+  return ret;
 }
 
 function updateTable(jsonString){
