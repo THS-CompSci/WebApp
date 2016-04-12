@@ -43,14 +43,10 @@ label.login{
     background-size: contain;
     margin: auto;
 }
-/*FAQ*/
-h1.faq{
-    font-size: 300%;
-    padding-left: 100px;
-}
-p.faq{
-    font-size: 130%;
-    padding: 10px 100px;
+label.create{
+    float: left;
+    clear: left;
+    margin-left: 0px;
 }
 
 /*6th period's stylesheet*/
