@@ -21,24 +21,24 @@ if (!$conn) {
 mysqli_select_db($conn,'dhp');
 */
 
-$checkstudent = "SELECT `user_type` FROM ".$userDB." WHERE username = '".$student."'";
+$checkstudent = "SELECT isTeacher FROM ".$userDB." WHERE ID = '".$student."'";
 $ret = createQuery($checkstudent);
 $row = mysqli_fetch_array($ret, MYSQLI_ASSOC);
-if($row['user_type']!='student'){
+if($row['isTeacher']!='student'){
     die("Invalid student ID :".$student);
 }
 
-$checkteacher = "SELECT `user_type` FROM ".$userDB." WHERE username = '".$teacher."'";
+$checkteacher = "SELECT isTeacher FROM ".$userDB." WHERE ID = '".$teacher."'";
 $ret = createQuery($checkteacher);
 $row = mysqli_fetch_array($ret, MYSQLI_ASSOC);
-if($row['user_type']!='teacher'){
+if($row['isTeacher']!='teacher'){
     die("Invalid teacher ID :".$teacher);
 }
 
 
 
-$sql = "INSERT INTO ".$passDB." (`student_id`,`teacher_id`,`destination`,`date`)
-        VALUES ('".$student."','".$teacher."','".$destination."','".$datetime."')";
+$sql = "INSERT INTO ".$passDB." (`ID`,`teacherName`,`dest`,`date`,`time`)
+        VALUES ('".$student."','".$teacher."','".$destination."','".$date."','".$time."')";
 
 
 //mysqli_query($conn,$sql);
