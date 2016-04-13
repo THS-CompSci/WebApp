@@ -8,8 +8,9 @@ include "config.php";
 #values being implemented
 $username = mysqli_real_escape_string($_POST["USERNAME"]);
 $password = mysqli_real_escape_string($_POST["PASSWORD"]);
-$first = mysqli_real_escape_string($_POST["FIRSTNAME"]);;
-$last = mysqli_real_escape_string($_POST["LASTNAME"]);
+//$first = mysqli_real_escape_string($_POST["FIRSTNAME"]);;
+//$last = mysqli_real_escape_string($_POST["LASTNAME"]);
+$name = $_POST["NAME"];
 $userType = mysqli_real_escape_string($_POST["USERTYPE"]);
 $notes = mysqli_real_escape_string($_POST["NOTES"]);
 
@@ -20,8 +21,8 @@ if (!$conn) {
 }
 */
 
-$sql ="INSERT INTO ".$userDB." (`username`,`password`,`first`,`last`,`user_type`,`notes`)
-       VALUES ('".$username."','".$password."','".$first."','".$last."','".$userType."','".$notes."')";
+$sql ="INSERT INTO ".$userDB." (`ID`,`password`,`name`,`teacher`)
+       VALUES ('".$username."','".$password."','".$name."','".$userType."')";
 
 //mysqli_select_db($conn,'dhp');
 //mysqli_query(  $conn,$sql );
