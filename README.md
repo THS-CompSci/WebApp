@@ -3,7 +3,7 @@ for the web app team
 
 # Pages in progress
 
-**CreatePass* allows teachers to generate a QR code for students based on student, date, time, and location.
+**CreatePass** allows teachers to generate a QR code for students based on student, date, time, and location.
 
 **Index** is the page that appears after logging in.
 
