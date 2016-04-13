@@ -3,10 +3,10 @@ include "config.php";
 
 $username = mysqli_real_escape_string($_POST["ID"]);
 
-$sql="SELECT `first`,`last` FROM ".$userDB." WHERE username ='".$username."'";
+$sql="SELECT `name` FROM ".$userDB." WHERE ID ='".$username."'";
 $ret = createQuery($sql);
 $row = $ret->fetch_assoc();
-$name = $row['first']." ".$row['last'];
+$name = $row['name'];
 
 echo json_encode($name);
 

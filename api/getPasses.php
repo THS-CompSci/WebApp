@@ -11,16 +11,16 @@ if (!$conn) {
     die(json_encode("connection error"));
 }
 mysqli_select_db($conn,'dhp');*/
-$sql = "SELECT `user_type` FROM ".$userDB." WHERE username = '".$student."'";
+$sql = "SELECT `teacher` FROM ".$userDB." WHERE ID = '".$student."'";
 $teacher=createQuery($sql);
 $row = $teacher->fetch_assoc();
-$isTeacher = $row['user_type']=="student";
+$isTeacher = $row['teacher']==false;
 
 if($isTeacher) {
-    $sql = "SELECT `destination`,`teacher_id`, `date`  FROM ".$passDB." WHERE student_id = '" . $student . "'";
+    $sql = "SELECT `dest`,`teacherName`, `date`  FROM ".$passDB." WHERE ID = '" . $student . "'";
 }
 else {
-    $sql = "SELECT `destination`,`student_id`, `date`  FROM ".$passDB." WHERE teacher_id = '" . $student . "'";
+    $sql = "SELECT `dest`,`ID`, `date`  FROM ".$passDB." WHERE teacherName = '" . $student . "'";
 }
 $ret=createQuery($sql);
 //$row=mysqli_fetch_array($ret,MYSQLI_ASSOC);
@@ -33,18 +33,18 @@ while($row=$ret->fetch_assoc()){
     $array[$i]['date'] = $row['date'];
 
     if(!$isTeacher){
-        $sql="SELECT `first`,`last` FROM ".$userDB." WHERE username ='".$row['student_id']."'";
+        $sql="SELECT `name` FROM ".$userDB." WHERE ID ='".$row['student_id']."'";
     }
     else{
-        $sql="SELECT `first`,`last` FROM ".$userDB." WHERE username ='".$row['teacher_id']."'";
+        $sql="SELECT `name` FROM ".$userDB." WHERE ID ='".$row['teacher_id']."'";
     }
     $ret2=createQuery($sql);
     $row2=mysqli_fetch_array($ret2,MYSQLI_ASSOC);
     if($isTeacher){
-        $array[$i]['teacher'] = $row2['first']." ".$row2['last'];
+        $array[$i]['teacher'] = $row2['name'];
     }
     else{
-        $array[$i]['student'] = $row2['first']." ".$row2['last'];
+        $array[$i]['student'] = $row2['name'];
     }
     $i++;
 }
