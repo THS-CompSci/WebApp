@@ -1,11 +1,12 @@
 # WebApp
 for the web app team
 
-# How it Works 
-**PassSpecification** is where students can create passes which teachers will need to authenticate
+# Pages in progress
 
-**PassHistory** is where previously issued passes can be reviewed and checked over with discretion
+**CreatePass* allows teachers to generate a QR code for students based on student, date, time, and location.
 
-**TeacherPage** is essentially the homepage for teachers where they can access other functions
+**Index** is the page that appears after logging in.
 
-**StudentPage** is the student alternative to TeacherPage
+**Login** allows users to log in.
+
+**PassHistory** is where previously issued passes can be reviewed and checked over with discretion.
