@@ -26,8 +26,6 @@
     </div>
 </form>
 <div class="col-sm-4"></div>
-<span class="error" style="display:none"> Please Enter Valid Data</span>
-<span class="success" style="display:none"> Form Submitted Success</span>
 <script>
     //not yet in use
     $(document).ready(function () {
@@ -36,8 +34,6 @@
             var pswd = $("#pswd").val();
             var dataString = 'username=' + usrnm + '&password=' + pswd;
             if (usrnm == '' || pswd == '') {
-                $('.success').fadeOut(200).hide();
-                $('.error').fadeOut(200).show();
             }
             else {
                 //check is verifying is different from sending
@@ -46,8 +42,6 @@
                     url: "checkLogin.php",
                     data: dataString,
                     success: function () {
-                        $('.success').fadeIn(200).show();
-                        $('.error').fadeOut(200).hide();
                         //if the usrnm and pswd works:
                         writeCookie('teacherId', usrnm, 1);
                     }

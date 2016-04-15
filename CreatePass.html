@@ -21,17 +21,20 @@
 </head>
 
 <body style="background: white">
-<img src="FinalTHSLOGO.png" style="height: auto; width: 100px; padding-left: 10px; padding-top: 10px;" onclick="location.href='Index.html'" class="btn">
+<img src="FinalTHSLOGO.png" style="height: auto; width: 100px; padding-left: 10px; padding-top: 10px;"
+     onclick="location.href='Index.html'" class="btn">
 <button class="btn btn-link" style="float: right; color: #3795e2; font-size: large">Log Out</button>
 <br>
 <br>
-<form class=" container-fluid" role="search" style="width: 40%; float: left">
+<form class="container-fluid" role="search" style="width: 40%; float: left">
     <!--<div class="input-group add-on" style="width: 45%">-->
     <!--</div>-->
 
-    <div class="right-inner-addon" >
+    <div class="right-inner-addon">
         <i class="glyphicon glyphicon-search"></i>
-        <input type="search" class="form-control" placeholder="Search student" id="searchStudentInput" />
+        <input type="search" class="form-control" placeholder="Search student" id="searchStudentInput"/>
+        <div class="list-group" id="search-results">
+    </div>
     </div>
 </form>
 <form name="form" class="container-fluid" role="form" method="post">
@@ -44,8 +47,6 @@
         <input type="button" class="btn btn-primary form-control submit" value="Create" id="createPass">
     </div>
 </form>
-<span class="error" style="display:none"> Please Enter Valid Data</span>
-<span class="success" style="display:none"> Form Submitted Success</span>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -70,23 +71,34 @@
         function instantSearch() {
             var studentName = $("#searchStudentInput").val();
             var dataString = 'name=' + studentName;
-        if (destination == '' || time == '' || date == '') {
-            $('.success').fadeOut(200).hide();
-            $('.error').fadeOut(200).show();
+            //edit this later
+            if (studentName=='') {
+                $('#search-results').empty();
+
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "findStudent.php",
+                    data: dataString,
+                    success: function (data) {
+                        var arrstudents = data.result.split(".");
+                        for (var i=0;i<arrstudents.length;i++){
+                            $("#search-results").addItem(arrstudents[i]);
+
+                        }
+
+                        
+                    }
+                });
+            }
+            return false;
         }
-        else {
-            $.ajax({
-                type: "POST",
-                url: "findStudent.php",
-                data: dataString,
-                success: function () {
-                    $('.success').fadeIn(200).show();
-                    $('.error').fadeOut(200).hide();
-                }
-            });
-        }
-        return false;
-        }
+
+        $.fn.addItem = function (studentName) {
+            var $name = $("<a href='' class='list-group-item'></a>").text(studentName);
+            $(this).append($name);
+        };
 
         $("#createPass").on("click", function () {
             var destination = $("#destination").val();
@@ -97,8 +109,6 @@
             var dataString = 'STUDENTID=' + studentId + '&TEACHERID=' + teacherId + '&DESTINATION=' + destination + '&TIMEOFPASS=' + time + '&DATEOFPASS=' + date;
 
             if (destination == '' || time == '' || date == '') {
-                $('.success').fadeOut(200).hide();
-                $('.error').fadeOut(200).show();
             }
             else {
                 $.ajax({
@@ -106,8 +116,6 @@
                     url: "createPass.php",
                     data: dataString,
                     success: function () {
-                        $('.success').fadeIn(200).show();
-                        $('.error').fadeOut(200).hide();
                     }
                 });
             }
